@@ -1,0 +1,46 @@
+def celsius_to_fahr(celsius):
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_cel(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+def celsius_to_kelv(celsius):
+    return celsius + 273.15
+
+def kelvin_to_cels(kelvin):
+    return kelvin - 273.15
+
+def fahrenheit_to_kel(fahrenheit):
+    celsius = fahrenheit_to_cel(fahrenheit)
+    return celsius_to_kelv(celsius)
+
+def kelvin_to_fahr(kelvin):
+    celsius = kelvin_to_cels(kelvin)
+    return celsius_to_fahr(celsius)
+
+def main():
+    print("Temperature Converter")
+    print("=====================")
+    temperature = float(input("Enter temperature value: "))
+    original_unit = input("Enter original unit (Celsius, Fahrenheit, Kelvin): ").lower()
+
+    if original_unit == "celsius":
+        converted_fahrenheit = celsius_to_fahr(temperature)
+        converted_kelvin = celsius_to_kelv(temperature)
+        print(f"{temperature} Celsius is equal to {converted_fahrenheit:.2f} Fahrenheit")
+        print(f"{temperature} Celsius is equal to {converted_kelvin:.2f} Kelvin")
+    elif original_unit == "fahrenheit":
+        converted_celsius = fahrenheit_to_cel(temperature)
+        converted_kelvin = fahrenheit_to_kel(temperature)
+        print(f"{temperature} Fahrenheit is equal to {converted_celsius:.2f} Celsius")
+        print(f"{temperature} Fahrenheit is equal to {converted_kelvin:.2f} Kelvin")
+    elif original_unit == "kelvin":
+        converted_celsius = kelvin_to_cels(temperature)
+        converted_fahrenheit = kelvin_to_fahr(temperature)
+        print(f"{temperature} Kelvin is equal to {converted_celsius:.2f} Celsius")
+        print(f"{temperature} Kelvin is equal to {converted_fahrenheit:.2f} Fahrenheit")
+    else:
+        print("Invalid input! Please enter Celsius, Fahrenheit, or Kelvin.")
+
+if __name__ == "__main__":
+    main()
